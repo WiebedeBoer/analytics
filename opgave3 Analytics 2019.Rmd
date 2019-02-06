@@ -1,0 +1,123 @@
+---
+title: "Opgave 3"
+author: '...'
+output: pdf_document
+---
+
+# Data
+Data voor deze opgave: telcotrain.csv en telcotest.csv. Documentatie van de data: telco.docx
+
+Je mag voor het maken van confusion matrices de functie die je in de vorige opgave (bij opgave 2 vraag 1c) zelf hebt gemaakt, gebruiken om gemakkelijker confusion matrices en dergelijke te berekenen.
+
+```{r}
+# Plaats hier de confusion functie
+# ...
+```
+
+# Inleveren
+Inleveren UITSLUITEND via Blackboard. Uiterste datum van inleveren: 17-3-2019
+Inleveren UITSLUITEND in formaat .PDF, .DOC of .DOCX. 
+Je kan, als je met RStudio werkt deze .Rmd file als basis gebruiken.
+
+# Inleiding
+In opgave 2 heb je deze data ook gebruikt, voor het maken van een logistic regressie-model. Zie het document "Opgave 2 Analytics" voor de details. 
+
+Deze opgave ging over een belangrijke vraag uit de Telecomindustrie: hoe houd ik mijn klanten? 
+
+In opgave 3 ga je daarmee verder. Het gemaakte logistic regressiemodel wordt vergeleken met een CART-tree model. Ook ga je Crossvalidation toepassen om de optimale boom te bepalen.
+
+De vraag is dus: hoe groot is de kans op Churn (vertrek) en welke variabelen spelen daarbij wel en niet een rol. Dit gaan we nu doen met de methode "CART trees".
+
+# Vraag 1
+De opgave begint met een herhaling van Opgave 2. (Zie vraag 1 van Opgave 2) 
+Maak opnieuw het optimale logistic regressie-model zoals eerder bepaald. Dat wil zeggen, met alleen nog significante variabelen.
+
+a. Laad de data (telcotrain.csv), verwijder de eerste en derde kolom en bouw het eerder (bij Opgave 2 (vraag 1b)) bepaalde optimale logistic regression model. Geef de summary van het model. 
+
+```{r}
+# ...
+```
+
+b. Gebruik dit model om de waarden van Churn in de testset (telcotest.csv) te voorspellen. Bij Opgave 2 (vraag 2) heb je ook de optimale drempelwaarde voor dit model bepaald. Geef voor die drempelwaarde de Confusion Matrix, de accuracy, de specificity en de sensitivity. 
+
+```{r}
+# ...
+```
+
+c. Maak ook een ROC-curve van het model en bepaal de Area Under Curve (AUC). Voor ROC-curves heb je de package ROCR nodig.
+
+```{r}
+# ...
+```
+
+# Vraag 2
+Maak nu een CART tree model voor dezelfde telcotrain data. Voor CART-trees heb je de packages rpart en rpart.plot nodig. De methodiek wordt behandeld in video 4 van de serie Judge Jury and Classifier.
+
+NB: Ook bij deze opgave moet je eerst de eerste en derde kolom uit de data verwijderen.
+ 
+a. Maak op basis van de trainingsdata een CART-tree voor de kans op Churn (afhankelijke variabele) als functie van de overige (onafhankelijke) variabelen. Gebruik een minbucket van 25.  Maak een plot van de tree. 
+
+```{r}
+# ...
+```
+
+b. Bereken ook de tree voor een minbucket van 5 en een voor een minbucket van 100. Druk ook daarvan de tree af. 
+
+```{r}
+# ...
+```
+
+# Vraag 3
+Valideer het CART-model dat bij vraag 2a gemaakt is. Gebruik daarvoor dit model om de waarden van Churn in de testset (telcotest.csv) te voorspellen.
+
+NB: Ook bij deze opgave moet je eerst de eerste en derde kolom uit de data verwijderen.
+
+a. Geef de Confusion Matrix, de accuracy, de specificity en de sensitivity.
+
+```{r}
+# ...
+```
+
+b. Maak ook een ROC-curve van het model en bepaal de Area Under Curve (AUC). Voor ROC-curves heb je de package ROCR nodig.
+
+```{r}
+# ...
+```
+
+c. Vergelijk de resultaten van dit CART-tree model met het logistic regression model uit vraag 1. Welke is het beste en waarom?
+
+> ...
+
+# Vraag 4
+Gebruik Cross-Validation om de optimale CART-tree voor deze data te kunnen bepalen. Hiervoor heb je de packages caret en e1071 nodig. De methodiek wordt behandeld in video 6 van de serie Judge Jury and Classifier.
+
+a. Bepaal door middel van Cross-Validation de optimale waarde voor de complexity-parameter (cp).
+
+```{r}
+# ...
+```
+
+b. Maak een plot van de Cross-Validation data. Valt je nog iets op?
+
+```{r}
+# ...
+```
+
+> ...
+
+c. Bereken de CART-tree met de berekende cp-waarde. Maak een plot van de tree.
+
+```{r}
+# ...
+```
+
+d. Gebruik ook dit model om de waarden van Churn in de testset (telcotest.csv) te voorspellen. Geef weer de Confusion Matrix, de accuracy, de specificity en de sensitivity.
+
+```{r}
+# ...
+```
+
+e. Vergelijk dit 'optimale' model met het 'standaard'-model dat je bij vraag 3 hebt gemaakt. Wat is je conclusie?
+
+> ...
+
